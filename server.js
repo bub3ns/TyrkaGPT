@@ -9,12 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Blokada bezpośredniego dostępu do data.js z przeglądarki
-app.get('/data.js', (req, res) => {
-    res.status(404).send('Not Found');
-});
-
-// Serwowanie plików statycznych (index.html, style.css, script.js)
+// Serwowanie plików statycznych (index.html, style.css, script.js, data.js)
 app.use(express.static(path.join(__dirname)));
 
 // Logika serwerowa bota

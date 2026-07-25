@@ -161,7 +161,24 @@ function getBotResponse(message) {
 }
 
 async function fetchBotResponse(message) {
-    // Symulacja opóźnienia sieciowego dla naturalnego efektu
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1000);
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message }),
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        if (res.ok) {
+            const data = await res.json();
+            if (data && data.response) return data.response;
+        }
+    } catch (e) {
+        // Jeśli serwer API nie odpowiada (np. GitHub Pages), używamy logiki w przeglądarce
+    }
+
     await new Promise(resolve => setTimeout(resolve, 300));
     return getBotResponse(message);
 }
