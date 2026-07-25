@@ -35,7 +35,7 @@ function addInitialBotMessage() {
     initialMessageAdded = true;
     
     const messageDiv = document.createElement('div');
-    messageDiv.className = 'message bot-message';
+    messageDiv.className = 'message bot-message initial-message';
     
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
@@ -200,6 +200,37 @@ chatForm.addEventListener('submit', async (e) => {
     removeTypingIndicator();
     showBotMessage(responseText);
 });
+
+// --- Losowanie riposty (przycisk kostki) ---
+function getRandomPunch() {
+    if (typeof punches === 'undefined') return null;
+    let allPunches = [];
+    for (const p of punches) {
+        if (p.responses && Array.isArray(p.responses)) {
+            allPunches.push(...p.responses);
+        }
+    }
+    const available = allPunches.filter(r => !usedResponses.has(r));
+    if (available.length === 0) return null;
+
+    const chosen = available[Math.floor(Math.random() * available.length)];
+    usedResponses.add(chosen);
+    return chosen;
+}
+
+const diceBtn = document.getElementById('dice-btn');
+if (diceBtn) {
+    diceBtn.addEventListener('click', () => {
+        const punch = getRandomPunch();
+        if (punch) {
+            userInput.value = punch;
+            userInput.focus();
+            showToast('Wylosowano ripostę!', 'success');
+        } else {
+            showToast('Brak dostępnych ripost!', 'error');
+        }
+    });
+}
 
 addInitialBotMessage();
 

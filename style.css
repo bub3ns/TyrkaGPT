@@ -146,6 +146,19 @@ body {
     max-width: 90%;
 }
 
+.initial-message {
+    align-self: center;
+    max-width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.initial-message .message-content {
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
 .bot-message .message-content {
     color: var(--text-color);
     font-size: 1.05rem;
@@ -218,7 +231,7 @@ body {
     color: var(--text-muted);
 }
 
-#send-btn {
+#dice-btn, #send-btn {
     background: var(--user-bubble-bg);
     color: #fff;
     border: none;
@@ -233,15 +246,18 @@ body {
     box-shadow: var(--user-bubble-shadow);
 }
 
-#send-btn:hover {
+#dice-btn:hover, #send-btn:hover {
     transform: scale(1.05);
 }
 
-#send-btn:active {
+#dice-btn:active, #send-btn:active {
     transform: scale(0.95);
 }
 
-#send-btn i {
+#dice-btn i, #send-btn i {
     font-size: 1.1rem;
+}
+
+#send-btn i {
     margin-left: -2px;
 }
