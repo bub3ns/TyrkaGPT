@@ -8,12 +8,12 @@ const toastContainer = document.getElementById('toast-container');
 function showToast(message, type = 'success') {
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
-    
+
     const icon = type === 'success' ? '<i class="fa-solid fa-check-circle" style="color: var(--success)"></i>' : '<i class="fa-solid fa-circle-exclamation" style="color: var(--error)"></i>';
     toast.innerHTML = `${icon} <span>${message}</span>`;
-    
+
     toastContainer.appendChild(toast);
-    
+
     setTimeout(() => {
         toast.classList.add('hide');
         toast.addEventListener('animationend', () => {
@@ -33,14 +33,14 @@ let initialMessageAdded = false;
 function addInitialBotMessage() {
     if (initialMessageAdded) return;
     initialMessageAdded = true;
-    
+
     const messageDiv = document.createElement('div');
     messageDiv.className = 'message bot-message initial-message';
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
     contentDiv.innerHTML = '<p>TyrkaGPT Made by bub3ns & spojrzenie</p>';
-    
+
     messageDiv.appendChild(contentDiv);
     chatBox.appendChild(messageDiv);
 }
@@ -48,11 +48,11 @@ function addInitialBotMessage() {
 function addUserMessage(text) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'message user-message';
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
     contentDiv.textContent = text;
-    
+
     messageDiv.appendChild(contentDiv);
     chatBox.appendChild(messageDiv);
     scrollToBottom();
@@ -62,16 +62,16 @@ function showTypingIndicator() {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'message bot-message typing-indicator-message';
     messageDiv.id = 'typing-indicator';
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content typing-indicator';
-    
+
     for (let i = 0; i < 3; i++) {
         const dot = document.createElement('div');
         dot.className = 'typing-dot';
         contentDiv.appendChild(dot);
     }
-    
+
     messageDiv.appendChild(contentDiv);
     chatBox.appendChild(messageDiv);
     scrollToBottom();
@@ -87,16 +87,16 @@ function removeTypingIndicator() {
 function showBotMessage(text) {
     const messageDiv = document.createElement('div');
     messageDiv.className = 'message bot-message';
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
-    
+
     // Zamiana znaków nowej linii na <br>
     contentDiv.innerHTML = text.replace(/\n/g, '<br>');
-    
+
     messageDiv.appendChild(contentDiv);
     chatBox.appendChild(messageDiv);
-    
+
     scrollToBottom();
 }
 
@@ -116,7 +116,7 @@ function findPunch(userMessage) {
     if (typeof punches === 'undefined') return null;
     const userWords = getUserWords(userMessage);
     let matchingResponses = [];
-    
+
     for (const punch of punches) {
         let activated = false;
         for (const title of punch.titles) {
@@ -126,13 +126,13 @@ function findPunch(userMessage) {
                 break;
             }
         }
-        
+
         if (activated) {
             const availableResponses = punch.responses.filter(r => !usedResponses.has(r));
             matchingResponses.push(...availableResponses);
         }
     }
-    
+
     if (matchingResponses.length > 0) {
         const response = matchingResponses[Math.floor(Math.random() * matchingResponses.length)];
         usedResponses.add(response);
@@ -185,23 +185,26 @@ async function fetchBotResponse(message) {
 
 chatForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const text = userInput.value.trim();
     if (!text) return;
-    
+
+    // Oznaczamy wiadomość jako użytą w czacie dopiero w momencie wysłania
+    usedResponses.add(text);
+
     addUserMessage(text);
     userInput.value = '';
-    
+
     // Animacja pisania
     showTypingIndicator();
-    
+
     const responseText = await fetchBotResponse(text);
-    
+
     removeTypingIndicator();
     showBotMessage(responseText);
 });
 
-// --- Losowanie riposty (przycisk kostki) ---
+// --- Losowanie tyrki ---
 function getRandomPunch() {
     if (typeof punches === 'undefined') return null;
     let allPunches = [];
@@ -213,8 +216,8 @@ function getRandomPunch() {
     const available = allPunches.filter(r => !usedResponses.has(r));
     if (available.length === 0) return null;
 
+    // Losujemy z niewysłanych tyrek (bez oznaczania jako użyta przy samym losowaniu)
     const chosen = available[Math.floor(Math.random() * available.length)];
-    usedResponses.add(chosen);
     return chosen;
 }
 
@@ -225,9 +228,9 @@ if (diceBtn) {
         if (punch) {
             userInput.value = punch;
             userInput.focus();
-            showToast('Wylosowano ripostę!', 'success');
+            showToast('Wylosowano tyrke!', 'success');
         } else {
-            showToast('Brak dostępnych ripost!', 'error');
+            showToast('Brak dostępnych tyrek!', 'error');
         }
     });
 }
