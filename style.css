@@ -231,7 +231,7 @@ body {
     color: var(--text-muted);
 }
 
-#dice-btn, #send-btn {
+#send-btn {
     background: var(--user-bubble-bg);
     color: #fff;
     border: none;
@@ -246,18 +246,48 @@ body {
     box-shadow: var(--user-bubble-shadow);
 }
 
-#dice-btn:hover, #send-btn:hover {
+#send-btn:hover {
     transform: scale(1.05);
 }
 
-#dice-btn:active, #send-btn:active {
+#send-btn:active {
     transform: scale(0.95);
 }
 
-#dice-btn i, #send-btn i {
+#send-btn i {
     font-size: 1.1rem;
+    margin-left: -2px;
 }
 
-#send-btn i {
-    margin-left: -2px;
+/* Floating Dice Button (prawy dolny róg ekranu) */
+#dice-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    background: var(--user-bubble-bg);
+    color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+#dice-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 25px rgba(124, 58, 237, 0.6);
+}
+
+#dice-btn:active {
+    transform: scale(0.95);
+}
+
+#dice-btn i {
+    font-size: 1.3rem;
 }
