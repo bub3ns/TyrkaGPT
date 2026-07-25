@@ -100,28 +100,70 @@ function showBotMessage(text) {
     scrollToBottom();
 }
 
-// --- Komunikacja z backendem ---
-async function fetchBotResponse(message) {
-    try {
-        const response = await fetch('/api/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ message })
-        });
-        
-        if (!response.ok) {
-            throw new Error('Błąd serwera');
+// --- Logika bota (działa bezpośrednio w przeglądarce, np. na GitHub Pages) ---
+let usedResponses = new Set();
+let usedOfftops = new Set();
+
+function clearWord(word) {
+    return word.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "").trim();
+}
+
+function getUserWords(text) {
+    return text.split(/\s+/).map(clearWord);
+}
+
+function findPunch(userMessage) {
+    if (typeof punches === 'undefined') return null;
+    const userWords = getUserWords(userMessage);
+    let matchingResponses = [];
+    
+    for (const punch of punches) {
+        let activated = false;
+        for (const title of punch.titles) {
+            const cleanTitle = clearWord(title);
+            if (userWords.some(word => word.includes(cleanTitle))) {
+                activated = true;
+                break;
+            }
         }
         
-        const data = await response.json();
-        return data.response;
-    } catch (err) {
-        console.error(err);
-        showToast('Nie udało się połączyć z serwerem', 'error');
-        return 'Wystąpił błąd połączenia z serwerem.';
+        if (activated) {
+            const availableResponses = punch.responses.filter(r => !usedResponses.has(r));
+            matchingResponses.push(...availableResponses);
+        }
     }
+    
+    if (matchingResponses.length > 0) {
+        const response = matchingResponses[Math.floor(Math.random() * matchingResponses.length)];
+        usedResponses.add(response);
+        return response;
+    }
+    return null;
+}
+
+function getOfftop() {
+    if (typeof offtops === 'undefined') return "limit offtop";
+    const available = offtops.filter(r => !usedOfftops.has(r));
+    if (available.length === 0) {
+        return "limit offtop";
+    }
+    const response = available[Math.floor(Math.random() * available.length)];
+    usedOfftops.add(response);
+    return response;
+}
+
+function getBotResponse(message) {
+    let response = findPunch(message);
+    if (!response) {
+        response = getOfftop();
+    }
+    return response;
+}
+
+async function fetchBotResponse(message) {
+    // Symulacja opóźnienia sieciowego dla naturalnego efektu
+    await new Promise(resolve => setTimeout(resolve, 300));
+    return getBotResponse(message);
 }
 
 chatForm.addEventListener('submit', async (e) => {

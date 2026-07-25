@@ -21,5 +21,7 @@ const offtops = [
     "limit wiadomosci"
 ];
 
-module.exports = { punches, offtops };
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { punches, offtops };
+}
 
