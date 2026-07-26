@@ -39,7 +39,7 @@ function addInitialBotMessage() {
 
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
-    contentDiv.innerHTML = '<p>TyrkaGPT Made by bub3ns & spojrzenie</p>';
+    contentDiv.innerHTML = '<p>TyrkaGPT Made by bub3ns & kataryniarz</p>';
 
     messageDiv.appendChild(contentDiv);
     chatBox.appendChild(messageDiv);

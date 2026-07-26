@@ -17,9 +17,18 @@ const punches = [
 ];
 
 const offtops = [
-    "ty ale zeszmacony cweIu jak twoja matka sie na chate wpierdala a tam stary z karaluchem na laptopie z urzedu uposledzona kurwo tapeta fsociety a na pasku zadan zminimalizowany ddos.py na gofrownice matki zamknij pizde",
+    "ty ale zeszmacony cwelu jak twoja matka sie na chate wpierdala a tam stary z karaluchem na laptopie z urzedu uposledzona kurwo tapeta fsociety a na pasku zadan zminimalizowany ddos.py na gofrownice matki zamknij pizde",
     "zamknij pizde twoj stary po robocie wlazi do tej lepianki waszej a stara plytki ze scian zdziera szmata jebana zamknij pizde",
-    "ty pa to twoj stary wchodzi na chate i mowi lokiec pieta my nachalni zaraz pedale wypierdolisz do kopalni o chuj tu chodzi cymbale?"
+    "ty kurwo jebana pa to, twoj stary wchodzi na chate i mowi lokiec pieta my nachalni zaraz pedale wypierdolisz do kopalni o chuj tu chodzi cymbale?",
+    "ale zamknij ryj twój stary w McDonaldzie po wiesmaku wszedł na stolik, macal sie po brzuchu i spiewal Pan McDonald farmę miał, ija-ija-o",
+    "zamknij pizde twoja matka jak komornik do drzwi puka to ze starym swiatla gasza i pod stol pizde daja to staremu pies nasikal do mordy cwelu upośledzony",
+    "ty jak twoja matka prysznica brala to się na spermie ojca poslizgnela na butelke od szamponu przysiad zrobila jak kulturysta ze sztanga",
+    "twoja matka w warzywniaku poprosila pomidory obrac bo staremu ostatnio się skorka osadzila na zoladku to 3 tygodnie w lozku jak zabity lezal to sprzedawczyni weselniaka wyjebala zamknij pizde",
+    "ty twój stary się z poduszka victoria secret przelizal o chuj tu chodzi kurwa jebana?",
+    "ty cwelu twój stary puscil bona w nocy to koldra zaczela latac gora dol jak sanie swietego mikolaja z matka na przodzie kurwo uposledzona",
+    "twój stary ksywa kurwa grzebien pedale jebany bo mu zeby powypierdalali na osiedlu przycwelona mysia mordo zamknij ryj",
+    "no pedale wam matka szklanki w domu pogryzła to jej żeby z porcelany się polamaly jak staremu nogi gdy go ze schodow zrzucili w wiezieniu cwela",
+    "jest taka sytuacja wyobraz sobie prima prilis a twoj stary nasral bobki zawinal w papierek od cukierka i dal matce do buta to go gonila dziwka wyjebal w futryne od drzwi i pisknal"
 ];
 
 if (typeof module !== 'undefined' && module.exports) {

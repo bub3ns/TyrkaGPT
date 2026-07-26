@@ -73,7 +73,7 @@ function getBotResponse(message) {
 app.post('/api/chat', (req, res) => {
     const { message } = req.body;
     if (!message || typeof message !== 'string') {
-        return res.status(400).json({ error: 'Nieprawidłowa wiadomość' });
+        return res.status(400).json({ error: 'chuju cos nie tak jest' });
     }
     const reply = getBotResponse(message);
     res.json({ response: reply });
