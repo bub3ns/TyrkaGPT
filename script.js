@@ -4,7 +4,6 @@ const chatBox = document.getElementById('chat-box');
 
 const toastContainer = document.getElementById('toast-container');
 
-// --- Powiadomienia (Toast) ---
 function showToast(message, type = 'success') {
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
@@ -23,8 +22,6 @@ function showToast(message, type = 'success') {
 }
 
 
-
-// --- Interfejs czatu ---
 function scrollToBottom() {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -91,7 +88,6 @@ function showBotMessage(text) {
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
 
-    // Zamiana znaków nowej linii na <br>
     contentDiv.innerHTML = text.replace(/\n/g, '<br>');
 
     messageDiv.appendChild(contentDiv);
@@ -100,7 +96,6 @@ function showBotMessage(text) {
     scrollToBottom();
 }
 
-// --- Logika bota (działa bezpośrednio w przeglądarce, np. na GitHub Pages) ---
 let usedResponses = new Set();
 let usedOfftops = new Set();
 
@@ -176,7 +171,7 @@ async function fetchBotResponse(message) {
             if (data && data.response) return data.response;
         }
     } catch (e) {
-        // Jeśli serwer API nie odpowiada (np. GitHub Pages), używamy logiki w przeglądarce
+        console.error('Error fetching bot response:', e);
     }
 
     await new Promise(resolve => setTimeout(resolve, 300));
@@ -189,13 +184,11 @@ chatForm.addEventListener('submit', async (e) => {
     const text = userInput.value.trim();
     if (!text) return;
 
-    // Oznaczamy wiadomość jako użytą w czacie dopiero w momencie wysłania
     usedResponses.add(text);
 
     addUserMessage(text);
     userInput.value = '';
 
-    // Animacja pisania
     showTypingIndicator();
 
     const responseText = await fetchBotResponse(text);
@@ -204,7 +197,6 @@ chatForm.addEventListener('submit', async (e) => {
     showBotMessage(responseText);
 });
 
-// --- Losowanie tyrki ---
 function getRandomPunch() {
     if (typeof punches === 'undefined') return null;
     let allPunches = [];
@@ -216,7 +208,6 @@ function getRandomPunch() {
     const available = allPunches.filter(r => !usedResponses.has(r));
     if (available.length === 0) return null;
 
-    // Losujemy z niewysłanych tyrek (bez oznaczania jako użyta przy samym losowaniu)
     const chosen = available[Math.floor(Math.random() * available.length)];
     return chosen;
 }

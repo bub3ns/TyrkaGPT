@@ -1,6 +1,9 @@
 const punches = [
     { "titles": ["cwelu"], "responses": ["ale nie cwelu tylko twoj stary ma dyche w portfelu synu kurwy i pedala", "ale nie cwelu tylko twojego starego gwalca na helu"] },
+    { "titles": ["cwela"], "responses": ["cwela i twojego starego zajebala mela frajerze jebany bez zebow"] },
     { "titles": ["frajerze"], "responses": ["ale nie frajerze tylko twoj stary sie wyjebal na skuterze zamknij pizde"] },
+    { "titles": ["pisal"], "responses": ["pisal i twoj stary podloge w publicznym kiblu lizal wypierdalaj brudasie jebany"] },
+    { "titles": ["wypisywal"], "responses": ["pisywal a twoj stary zolty snieg z podworka zlizywal wypierdalaj"] },
     { "titles": ["krzywo", "krzywe", "krzywych", "krzywemu", "krzywa"], "responses": ["no krzywe to masz kurwo jebana przegrody nosowe jak ci stary cwelu jebany do pokoju jak ballerina cappucina wparowal uposledzencu wypierdalaj"] },
     { "titles": ["menelu"], "responses": ["ale nie menelu tylko twoja stara przynosi 2500 z burdelu synu kurwy"] },
     { "titles": ["weselu", "wesele", "weselach", "wesela"], "responses": ["pedale ale na weselu to twoj stary matke poderwal jak do niej z kubkiem pelnym kapslow podbil w garniturze z muszka pedale zamknij ryj"] },
@@ -10,6 +13,7 @@ const punches = [
     { "titles": ["gacie", "gaci", "gaciach"], "responses": ["cwelu jebany gacie a wy z matka choroby weneryczne macie zamknij ryj", "synu dziwki nie gacie tylko w rodzinie choroby weneryczne macie", "ty ale nie gacie tylko matki ze starym sie w nocy dobieracie zamykasz pizde"] },
     { "titles": ["ryj", "ryja", "ryju"], "responses": ["ty kurwa ryj twoj stary postura jak strachowyj przycwelona mysia mordo"] },
     { "titles": ["wypierdalaj"], "responses": ["kurwo wypierdalaj a stary ci nad talerzem gada szybciej to gowno wpierdalaj"] },
+    { "titles": ["pedale"], "responses": ["pedale a twoj stary ma gowno na grzale smieciu jebany zamknij ryj", "pedale i twoj stary pajeczak chodzi po regale owlosiony smiec jebany uposledzony "] },
     { "titles": ["wpierdolil"], "responses": ["wpierdolil to sie twoj stary do rowu jak ukrainka mu dupe wystawila cwelu jebany na A5"] },
     { "titles": ["zacinaj", "zacina", "zacinasz"], "responses": ["zacial to sie twojemu staremu gramofon pedale jebany uposledzony to matka na nosie zaczela plyty odtwarzac wypierdalaj"] },
     { "titles": ["lootuje", "zlootuje", "lootowal", "zlootowal"], "responses": ["zlootowal to twoj stary cala lodowke z kielbasy skolima przed wizyta komornika cwelu jebany uposledzony"] },
@@ -28,7 +32,10 @@ const offtops = [
     "ty cwelu twój stary puscil bona w nocy to koldra zaczela latac gora dol jak sanie swietego mikolaja z matka na przodzie kurwo uposledzona",
     "twój stary ksywa kurwa grzebien pedale jebany bo mu zeby powypierdalali na osiedlu przycwelona mysia mordo zamknij ryj",
     "no pedale wam matka szklanki w domu pogryzła to jej żeby z porcelany się polamaly jak staremu nogi gdy go ze schodow zrzucili w wiezieniu cwela",
-    "jest taka sytuacja wyobraz sobie prima prilis a twoj stary nasral bobki zawinal w papierek od cukierka i dal matce do buta to go gonila dziwka wyjebal w futryne od drzwi i pisknal"
+    "jest taka sytuacja wyobraz sobie prima prilis a twoj stary nasral bobki zawinal w papierek od cukierka i dal matce do buta to go gonila dziwka wyjebal w futryne od drzwi i pisknal",
+    "ty cwelu jebany jak twoja matka w pracy na magazynie sie na paletach przewrocila i zeby jej wypadly z geby to stary je zbieral z podlogi i do mordy wkladal zamknij pizde",
+    "no twoja matka kurwa jebana ksywa wozek sklepowy 2 zlote i sie ja popycha ile chce",
+    "ale nie wychylaj sie pedale jak po twojej matce bezdomni skacza jak po trampolinie"
 ];
 
 if (typeof module !== 'undefined' && module.exports) {

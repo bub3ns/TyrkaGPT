@@ -9,10 +9,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Serwowanie plików statycznych (index.html, style.css, script.js, data.js)
 app.use(express.static(path.join(__dirname)));
 
-// Logika serwerowa bota
 let usedResponses = new Set();
 let usedOfftops = new Set();
 
