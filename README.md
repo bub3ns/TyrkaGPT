@@ -1,1 +1,2 @@
-"# TyrkaGPT" 
+# TyrkaGPT
+**prawa zastrzezone**

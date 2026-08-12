@@ -7,41 +7,41 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Chat</title>
-    <link rel="stylesheet" href="style.css?v=1.0.2">
+    <title>TyrkaGPT</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css?v=1.0.4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <!-- Kontener na powiadomienia -->
+    <canvas id="snow-canvas"></canvas>
     <div id="toast-container" class="toast-container"></div>
 
-    <!-- Główny interfejs czatu -->
     <div class="chat-container" id="chat-interface">
         <main class="chat-box" id="chat-box">
-            <!-- Wiadomości będą się tu pojawiać -->
         </main>
 
         <footer class="input-container">
             <form id="chat-form">
                 <input type="text" id="user-input" placeholder="Napisz wiadomość..." autocomplete="off" autofocus>
-                <button type="submit" id="send-btn" title="Wyślij">
+                <button type="submit" id="send-btn" data-tooltip="Wyślij">
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </footer>
     </div>
 
-    <!-- Przycisk kostki w prawym dolnym rogu ekranu -->
-    <button type="button" id="dice-btn" title="Losuj tyrkę">
+    <button type="button" id="dice-btn" data-tooltip="Losuj tyrkę">
         <i class="fa-solid fa-dice"></i>
     </button>
 
     <script src="data.js?v=1.0.2"></script>
     <script src="script.js?v=1.0.2"></script>
+    <script src="animation.js?v=1.0.0"></script>
+    <script src="snow.js?v=1.1.0"></script>
 </body>
 
 </html>
