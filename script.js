@@ -137,7 +137,7 @@ function findPunch(userMessage) {
 }
 
 function getOfftop() {
-    if (typeof offtops === 'undefined') return "limit offtop";
+    if (typeof offtops === 'undefined') return "wypierdalaj";
     const available = offtops.filter(r => !usedOfftops.has(r));
     if (available.length === 0) {
         return "limit offtop";
